@@ -2,20 +2,16 @@ import { Dimensions, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { Pressable } from 'react-native'
 
-const JobCart = ({onPress}) => {
+const JobCart = ({ onPress }) => {
 
-   
 
     return (
-
         <Pressable style={styles.container} onPress={onPress}  >
             <Text style={styles.title}>JobCart</Text>
             <Text style={styles.smallTitle}>JobCart</Text>
             <Text style={styles.locationDesc}>JobCart</Text>
             <Text style={styles.level}>JobCart</Text>
         </Pressable>
-
-
     )
 }
 

@@ -9,11 +9,35 @@ const Stack = createNativeStackNavigator();
 
 const JobStack = () => {
   return (
+    <Stack.Navigator
+      screenOptions={{
+        headerStyle: { backgroundColor: "black" },
+        headerTintColor: "#ef5350",
+        headerTitleAlign: "center",
+      }}
+    >
+      <Stack.Screen
+        name="JobPage"
+        component={Job}
+        options={{ title: "JOBS" }}
+      />
+      <Stack.Screen
+        name="JobDetail"
+        component={JobDetail}
+        options={{ title: "DETAİL" }}
+      />
+    </Stack.Navigator>
+  );
+};
+
+const FavouriteStack = () => {
+  return (
     <Stack.Navigator>
-      <Stack.Screen name="Job" component={Job} options={{
-        headerShown:false
-      }} />
-      <Stack.Screen name="JobDetail" component={JobDetail} />
+      <Stack.Screen
+        name="Favorited Jobs"
+        component={FavoritedJobs}
+        options={{ title: "FAVORITED" }}
+      />
     </Stack.Navigator>
   );
 };
@@ -23,13 +47,18 @@ export default function App() {
     <NavigationContainer>
       <Drawer.Navigator
         screenOptions={{
+          headerShown: false,
+          headerStyle: { backgroundColor: "black" },
+          headerTintColor: "#ef5350",
           headerTitleAlign: "center",
-          headerTintColor: "#F27976",
-          headerTitleStyle: { fontSize: 21 },
+          drawerActiveBackgroundColor: "#ef5350",
+          drawerInactiveTintColor: "white",
+          drawerActiveTintColor: "white",
+          drawerStyle: { backgroundColor: "#161b22" },
         }}
       >
         <Drawer.Screen name="JobScreen" component={JobStack} />
-        <Drawer.Screen name="Favorited Jobs" component={FavoritedJobs} />
+        <Drawer.Screen name="FavoritedScreen" component={FavouriteStack} />
       </Drawer.Navigator>
     </NavigationContainer>
   );
