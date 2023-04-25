@@ -11,7 +11,6 @@ const JobStack = () => {
   return (
     <Stack.Navigator
       screenOptions={{
-        headerStyle: { backgroundColor: "black" },
         headerTintColor: "#ef5350",
         headerTitleAlign: "center",
       }}
@@ -32,11 +31,16 @@ const JobStack = () => {
 
 const FavouriteStack = () => {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator
+      screenOptions={{
+        headerTintColor: "#ef5350",
+        headerTitleAlign: "center",
+      }}
+    >
       <Stack.Screen
         name="Favorited Jobs"
         component={FavoritedJobs}
-        options={{ title: "FAVORITED" }}
+        options={{ title: "FAVORITED JOBS" }}
       />
     </Stack.Navigator>
   );
@@ -48,7 +52,6 @@ export default function App() {
       <Drawer.Navigator
         screenOptions={{
           headerShown: false,
-          headerStyle: { backgroundColor: "black" },
           headerTintColor: "#ef5350",
           headerTitleAlign: "center",
           drawerActiveBackgroundColor: "#ef5350",

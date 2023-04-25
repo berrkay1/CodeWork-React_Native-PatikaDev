@@ -2,15 +2,14 @@ import { Dimensions, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { Pressable } from 'react-native'
 
-const JobCart = ({ onPress }) => {
-
+const JobCart = ({ onPress, job }) => {
 
     return (
         <Pressable style={styles.container} onPress={onPress}  >
-            <Text style={styles.title}>JobCart</Text>
-            <Text style={styles.smallTitle}>JobCart</Text>
-            <Text style={styles.locationDesc}>JobCart</Text>
-            <Text style={styles.level}>JobCart</Text>
+            <Text style={styles.title}>{job.name}</Text>
+            <Text style={styles.smallTitle}>{job.company.name}</Text>
+            <Text style={styles.locationDesc}>{job.locations[0].name}</Text>
+            <Text style={styles.level}>{job.levels[0].name}</Text>
         </Pressable>
     )
 }
@@ -20,14 +19,14 @@ export default JobCart
 const styles = StyleSheet.create({
     container: {
         width: Dimensions.get('window').width / 1.05,
-        height: Dimensions.get('window').height / 5.5,
+        height: Dimensions.get('window').height / 3.8,
         borderColor: '#BDBDBD',
         borderWidth: 1,
         backgroundColor: '#fff',
-        padding: 10,
+        padding: 5,
         margin: 10,
         borderRadius: 10,
-        flex: 0
+
     },
     title: {
         fontSize: 22,
@@ -45,7 +44,7 @@ const styles = StyleSheet.create({
         fontSize: 19,
         fontWeight: 'bold',
         marginTop: 5,
-        width: 180
+        width: 195
     },
     level: {
         fontSize: 20,
