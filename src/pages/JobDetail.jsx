@@ -1,5 +1,6 @@
-import { Button, ScrollView, StyleSheet, Text, View } from 'react-native'
+import { Button, Dimensions, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
+import RenderHtml from 'react-native-render-html';
 
 const JobDetail = ({ route }) => {
 
@@ -11,19 +12,32 @@ const JobDetail = ({ route }) => {
         <Text style={styles.jobName}>{job.name}</Text>
         <Text style={styles.location}>
           <Text style={styles.titleHeader}>Locations:</Text>
-          {job.name}
+          {job.locations[0].name}
         </Text>
         <Text style={styles.jobLevel}>
           <Text style={styles.titleHeader}>Job Level:</Text>
-          {job.name}
+          {job.levels[0].name}
         </Text>
-        <Text style={styles.jobTitle}></Text>
+        <Text style={styles.jobTitle}>JOB DETAİL</Text>
       </View>
       <View style={styles.descBody}>
-        <Text style={styles.jobDesc}></Text>
+
+        <RenderHtml
+          source={{ html: job.contents }}
+          contentWidth={Dimensions.get('window').width}
+          baseStyle={styles.jobDesc}
+        />
+
       </View>
       <View style={styles.buttonBody}>
-        
+        <TouchableOpacity >
+          <Text style={styles.btn}>SUBMIT</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity >
+          <Text style={styles.btn}>FAVORUITE</Text>
+        </TouchableOpacity>
+
       </View>
     </ScrollView>
   )
@@ -58,26 +72,34 @@ const styles = StyleSheet.create({
   },
   jobTitle: {
     fontSize: 18,
-    color: '#6B767C'
+    color: '#37474F',
+    textAlign: 'center',
+    marginBottom:10
   },
   descBody: {
-    height: 300,
+
     backgroundColor: '#fff',
-    flex: 4
+    flex: 3
   },
   jobDesc: {
     fontSize: 15,
-    color: '#000'
+    color: '#000',
+    padding: 5
   },
   buttonBody: {
     display: 'flex',
-    alignItems: 'center',
     justifyContent: 'center',
-    flex: 1
+    flex: 2,
+    flexDirection:'row',
+    padding:10
   },
   btn: {
     backgroundColor: '#EF5350',
     fontSize: 22,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    padding:10,
+    color:'#fff',
+    margin:5,
+    borderRadius:10
   }
 })

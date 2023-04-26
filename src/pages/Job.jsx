@@ -12,7 +12,7 @@ const Job = ({ navigation }) => {
         navigation.navigate('JobDetail', { item })
     }
 
-    const renderItemJobCart = ({ item }) => <JobCart onPress={goToDetail(item)} job={item} />
+    const renderItemJobCart = ({ item }) => <JobCart onPress={()=>goToDetail(item)} job={item} />
 
     return (
         <View style={styles.container}>
