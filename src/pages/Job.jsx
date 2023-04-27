@@ -2,6 +2,8 @@ import { FlatList, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import JobCart from '../components/JobCart'
 import fetchHook from '../Hooks/fetchHook'
+import Loading from '../components/Loading'
+import Error from '../components/Error'
 
 const Job = ({ navigation }) => {
 
@@ -12,10 +14,17 @@ const Job = ({ navigation }) => {
         navigation.navigate('JobDetail', { item })
     }
 
-    const renderItemJobCart = ({ item }) => <JobCart onPress={()=>goToDetail(item)} job={item} />
+
+
+    const renderItemJobCart = ({ item }) => <JobCart onPress={() => goToDetail(item)} job={item} />
 
     return (
         <View style={styles.container}>
+
+            {loading && <Loading />}
+
+            {error && <Error />}
+
             <FlatList
                 data={data.results}
                 renderItem={renderItemJobCart}

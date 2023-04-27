@@ -1,13 +1,27 @@
-import { Button, Dimensions, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { Dimensions, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 import RenderHtml from 'react-native-render-html';
 
+import { useSelector, useDispatch } from 'react-redux';
+
+
+
 const JobDetail = ({ route }) => {
 
-  const job = route.params.item
+  const job = route.params.item;
+
+  const list = useSelector(selector => selector.FavouiteList);
+  console.log('list', list)
+
+  const dispatch = useDispatch()
+
+
+  const handleAddJobs = () => {
+    dispatch({ type: 'ADD_JOB', payload: { jobs: job } })
+  }
 
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView style={styles.container} >
       <View style={styles.headerBody}>
         <Text style={styles.jobName}>{job.name}</Text>
         <Text style={styles.location}>
@@ -30,7 +44,7 @@ const JobDetail = ({ route }) => {
 
       </View>
       <View style={styles.buttonBody}>
-        <TouchableOpacity >
+        <TouchableOpacity onPress={handleAddJobs} >
           <Text style={styles.btn}>SUBMIT</Text>
         </TouchableOpacity>
 
@@ -74,7 +88,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: '#37474F',
     textAlign: 'center',
-    marginBottom:10
+    marginBottom: 10
   },
   descBody: {
 
@@ -90,16 +104,16 @@ const styles = StyleSheet.create({
     display: 'flex',
     justifyContent: 'center',
     flex: 2,
-    flexDirection:'row',
-    padding:10
+    flexDirection: 'row',
+    padding: 10
   },
   btn: {
     backgroundColor: '#EF5350',
     fontSize: 22,
     fontWeight: 'bold',
-    padding:10,
-    color:'#fff',
-    margin:5,
-    borderRadius:10
+    padding: 10,
+    color: '#fff',
+    margin: 5,
+    borderRadius: 10
   }
 })
