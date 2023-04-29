@@ -2,7 +2,7 @@ import { Dimensions, ScrollView, StyleSheet, Text, TouchableOpacity, View } from
 import React from 'react'
 import RenderHtml from 'react-native-render-html';
 
-import { useSelector, useDispatch } from 'react-redux';
+import {  useDispatch } from 'react-redux';
 
 
 
@@ -10,8 +10,6 @@ const JobDetail = ({ route }) => {
 
   const job = route.params.item;
 
-  const list = useSelector(selector => selector.FavouiteList);
-  console.log('list', list)
 
   const dispatch = useDispatch()
 
@@ -44,11 +42,11 @@ const JobDetail = ({ route }) => {
 
       </View>
       <View style={styles.buttonBody}>
-        <TouchableOpacity onPress={handleAddJobs} >
+        <TouchableOpacity  >
           <Text style={styles.btn}>SUBMIT</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity >
+        <TouchableOpacity onPress={handleAddJobs}>
           <Text style={styles.btn}>FAVORUITE</Text>
         </TouchableOpacity>
 
